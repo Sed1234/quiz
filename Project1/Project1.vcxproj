@@ -110,6 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Presentation.cpp" />
+    <ClCompile Include="Questions.cpp" />
+    <ClCompile Include="Quiz.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="User.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Presentation.h" />
+    <ClInclude Include="Questions.h" />
+    <ClInclude Include="Quiz.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
