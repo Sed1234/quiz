@@ -13,6 +13,7 @@ public:
 	int score = 0;
 	~Quiz();
 	void initQuestions();
+	int getScore();
 	void writeResultToFile();
 };
 

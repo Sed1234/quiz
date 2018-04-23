@@ -1,4 +1,6 @@
 #include "Quiz.h"
+#include "User.h"
+#include <fstream>
 
 Quiz::Quiz()
 {
@@ -16,13 +18,33 @@ Quiz::~Quiz()
 
 void Quiz::initQuestions()
 {
-	
-	this->questions.push_back(Questions("2+2", { "1","2","3","4" }, 4));
-	this->questions.push_back(Questions("2+3", { "5","2","3","4" }, 1));
-	this->questions.push_back(Questions("2+4", { "1","6","3","4" }, 2));
-	this->questions.push_back(Questions("2+5", { "1","2","7","4" }, 3));
+	std::ifstream in("questions.txt");
+	std::string text;
+	std::vector<std::string> answers;
+	int right;
+	while (!in.eof()) {
+		std::getline(in, text);
+		std::string temp;
+		for (int i = 0; i < 4; i++)
+		{
+			std::getline(in, temp);
+			answers.push_back(temp);
+		}
+		 in >> right;
+		questions.push_back(Questions(text, answers, right));
+		answers.clear();
+		text.clear();
+	}
+	in.close();
+}
+int Quiz::getScore()
+{
+	return score;
 }
 
 void Quiz::writeResultToFile()
 {
+	std::ofstream out("point1.txt");
+	out <<user->getUsername()  <<" " <<Quiz::getScore();
 }
+
